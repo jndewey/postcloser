@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @closing.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @closing.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_closing_path(@closing) %> |
+<%= link_to 'Back', closings_path %>
