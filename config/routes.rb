@@ -1,5 +1,9 @@
 Postcloser::Application.routes.draw do
+  devise_for :users
+
   resources :closings
+
+root to: 'closings#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
