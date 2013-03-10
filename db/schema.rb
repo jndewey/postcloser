@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(:version => 20130226013417) do
 
   create_table "closings", :force => true do |t|
     t.string   "name"
+    t.string   "dealname"
+    t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
