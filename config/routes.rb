@@ -1,4 +1,6 @@
 Postcloser::Application.routes.draw do
+  get "profiles/show"
+
   devise_for :users
 
 
@@ -11,8 +13,10 @@ Postcloser::Application.routes.draw do
   resources :closings
 
   get 'feed', to: 'closings#index', as: :feed
-
   root to: 'closings#index'
+
+  get '/:id', to: 'profiles#show'
+ 
 
 
   # The priority is based upon order of creation:
