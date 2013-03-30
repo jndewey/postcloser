@@ -1,0 +1,16 @@
+<div class="page-header" >
+<h1> <%= @user.full_name %> </h1>
+</div>
+
+<% if @closings %>
+<% @closings.each do |closing| %>
+<div class="well" >
+	<%= closing.content %>
+	<hr />
+	<%= link_to time_ago_in_words(closing.created_at), closing_path(closing) %> ago
+</div>
+<% end %>
+
+<% end %>
+
+

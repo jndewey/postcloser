@@ -6,7 +6,15 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 # gem "activerecord-postgresql-adapter"
 #group :development, :test do
-gem 'sqlite3'
+group :development do 
+	gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
+end
+
+
 gem 'devise'
 gem 'simple_form'
 
