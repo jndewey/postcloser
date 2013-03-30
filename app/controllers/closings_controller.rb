@@ -40,7 +40,7 @@ class ClosingsController < ApplicationController
   # POST /closings
   # POST /closings.json
   def create
-    @closing = Closing.new(params[:closing])
+    @closing = current_user.closings.new(params[:closing])
 
     respond_to do |format|
       if @closing.save
@@ -56,8 +56,11 @@ class ClosingsController < ApplicationController
   # PUT /closings/1
   # PUT /closings/1.json
   def update
-    @closing = Closing.find(params[:id])
-
+    @closing = current_user.closings.find(params[:id])
+    if params[:closing] && params[:closing].has_key?(:user_id)
+       params[:closing].delete(:user_id)
+     end
+     
     respond_to do |format|
       if @closing.update_attributes(params[:closing])
         format.html { redirect_to @closing, notice: 'Closing was successfully updated.' }
