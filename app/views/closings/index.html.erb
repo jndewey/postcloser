@@ -4,7 +4,7 @@
 
 <%= link_to "Create a New Closing", new_closing_path, class: "btn btn-success" %>
 
-<% @closings.each do |closing| %>
+<% @user_closings.each do |closing| %>
 <div class="Closing">
   <strong><%=closing.dealname %></strong>
 <P><%=closing.content %></p>

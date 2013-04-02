@@ -11,10 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226013417) do
+ActiveRecord::Schema.define(:version => 20130401232429) do
 
   create_table "closings", :force => true do |t|
     t.string   "name"
+    t.string   "teammember"
     t.string   "dealname"
     t.integer  "user_id"
     t.text     "content"
