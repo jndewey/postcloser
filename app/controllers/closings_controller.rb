@@ -5,9 +5,9 @@ class ClosingsController < ApplicationController
     @user_closings = Array.new
     @closings = Closing.all
     @closings.each do |closing|
-    if closing.teammember.include?(current_user.email)
-      @user_closings << closing
-    end
+       if closing.teammember.include?(current_user.email)
+        @user_closings << closing
+       end
     end
 
     respond_to do |format|
