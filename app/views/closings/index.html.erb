@@ -3,12 +3,11 @@
 </div>
 
 <%= link_to "Create a New Closing", new_closing_path, class: "btn btn-success" %>
-
+<% if @user_closings != nil %>
 <% @user_closings.each do |closing| %>
 <div class="Closing">
   <strong><%=closing.dealname %></strong>
 <P><%=closing.content %></p>
-
 
   <div class="meta">
     <%=link_to time_ago_in_words(closing.created_at) + " ago", closing %>
@@ -18,3 +17,7 @@
       <%=link_to "Delete", closing, method: :delete, data: {confirm: "Are you sure you want to delete this Closing?"} %>
   </div>
 <% end %>
+<% end %>
+<% if @user_closings == nil %>
+	<%= @need_to_log_in %>
+	<% end %>

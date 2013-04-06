@@ -2,12 +2,16 @@ class ClosingsController < ApplicationController
   # GET /closings
   # GET /closings.json
   def index
+    if current_user == nil
+      @need_to_log_in = "Log in to see your closings"
+    else 
     @user_closings = Array.new
     @closings = Closing.all
     @closings.each do |closing|
        if closing.team_leader.include?(current_user.email)
         @user_closings << closing
        end
+     end
     end
 
     respond_to do |format|
