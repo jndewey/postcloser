@@ -7,7 +7,10 @@ class ClosingsController < ApplicationController
     else 
     @user_closings = Array.new
     @closings = Closing.all
-    @closings.each do |closing|
+    @closings.each do |closing| 
+      if closing.team_leader == nil
+        closing.team_leader = "none"
+      end
        if closing.team_leader.include?(current_user.email)
         @user_closings << closing
        end
