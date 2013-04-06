@@ -1,13 +1,15 @@
 <div class="page_header">
 <h1>All Closings</h1>
 </div>
-
+<% if current_user != nil %>
 <%= link_to "Create a New Closing", new_closing_path, class: "btn btn-success" %>
+<% end %>
 <% if @user_closings != nil %>
 <% @user_closings.each do |closing| %>
 <div class="Closing">
   <strong><%=closing.dealname %></strong>
 <P><%=closing.content %></p>
+	<p><%=closing.closing_date %></p>
 
   <div class="meta">
     <%=link_to time_ago_in_words(closing.created_at) + " ago", closing %>

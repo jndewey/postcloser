@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405003908) do
+ActiveRecord::Schema.define(:version => 20130406192336) do
 
   create_table "closings", :force => true do |t|
     t.string   "name"
-    t.string   "teammember"
     t.string   "dealname"
     t.integer  "user_id"
     t.text     "content"
@@ -24,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20130405003908) do
     t.string   "team_leader"
     t.string   "relationship_manager"
     t.string   "Bank_Closer"
+    t.string   "team_member_one"
+    t.string   "team_member_two"
+    t.string   "team_member_three"
+    t.string   "team_member_four"
+    t.string   "team_member_five"
+    t.string   "borrower_counsel_one"
+    t.string   "borrower_counsel_two"
+    t.date     "closing_date"
   end
 
   create_table "users", :force => true do |t|
