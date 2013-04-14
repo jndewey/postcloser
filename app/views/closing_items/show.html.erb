@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @closing_item.title %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @closing_item.author %>
+</p>
+
+<p>
+  <b>Tasks:</b>
+  <%= @closing_item.tasks %>
+</p>
+
+<p>
+  <b>Files:</b>
+  <%= @closing_item.files %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @closing_item.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_closing_item_path(@closing_item) %> |
+<%= link_to 'Back', closing_items_path %>

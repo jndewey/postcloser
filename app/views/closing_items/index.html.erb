@@ -1,0 +1,32 @@
+<h1>Listing closing_items</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Tasks</th>
+    <th>Files</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @closing_items.each do |closing_item| %>
+  <tr>
+    <td><%= closing_item.title %></td>
+    <td><%= closing_item.author %></td>
+    <td><%= closing_item.tasks %></td>
+    <td><%= closing_item.files %></td>
+    <td><%= closing_item.notes %></td>
+    <td><%= closing_item.dealname %></td>
+    <td><%= link_to 'Show', closing_item %></td>
+    <td><%= link_to 'Edit', edit_closing_item_path(closing_item) %></td>
+    <td><%= link_to 'Destroy', closing_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Closing item', new_closing_item_path %>

@@ -1,0 +1,20 @@
+
+<% if current_user.nil? %>
+<p> Log in to Generate Reports</p>
+<% else %>
+<p> Below is a list of all closings that you have generated that are still pending:</P>
+<% @closings.each do |closing| %>
+<div class="Closing">
+  <strong><%=closing.dealname %></strong>
+<P><%=closing.content %></p>
+	<p><%=closing.closing_date %></p>
+
+  <div class="meta">
+    <%=link_to time_ago_in_words(closing.created_at) + " ago", closing %>
+</div>
+    
+  </div>
+  <% end %>
+<% end %>
+
+
