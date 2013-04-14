@@ -5,6 +5,4 @@ class Closing < ActiveRecord::Base
 
     has_many  :closing_items
 
-  
-
 end
