@@ -1,6 +1,8 @@
 class ClosingsController < ApplicationController
   # GET /closings
   # GET /closings.json
+
+  
   def index
     if current_user == nil
       @need_to_log_in = "Log in to see your closings"
@@ -26,6 +28,7 @@ class ClosingsController < ApplicationController
   # GET /closings/1
   # GET /closings/1.json
   def show
+
     @closing = Closing.find(params[:id])
 
     respond_to do |format|
@@ -96,4 +99,30 @@ class ClosingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+ def send_text
+    @closing = Closing.find(params[:id])
+    phone_number = '+19048494540'
+    client = Twilio::REST::Client.new "AC4ee5339c8cf59e2c7aaec90384c91981", "2022aeeda0de6c52ee08b3d20cabe67a"
+    client.account.sms.messages.create(
+    :from => phone_number,
+    :to => '+19044727772',
+    :body => "The following items are still pending #{@closing.content}"
+    )
+    end
+
+  def send_mail
+    @closing = Closing.find(params[:id])
+    url = "https://sendgrid.com/api/mail.send.json"
+    response = HTTParty.post url, :body => {
+    "api_user" => "jndewey",
+    "api_key" => "huskers",
+    "to" => "jndewey@gmail.com",
+    "from" => "joe.dewey@hklaw.com",
+    "subject" => @closing.dealname,
+    "text" => "The following items are still outstanding #{@closing.content}."
+    }
+    response.body
+    end
+
 end

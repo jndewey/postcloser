@@ -8,8 +8,18 @@
 <p>
   <b>Content:</b>
   <%= @closing.content %>
+  <% @closing.closing_items.each do |closing_item|%>
+  <% id = closing_item.id %>
+  <% title = closing_item.title %>
+  <p><%= link_to "#{title}", edit_closing_item_path(id) %></p>
+  <% end %>
+  <%= show_RM(@closing) %>
 </p>
 
 
 <%= link_to 'Edit', edit_closing_path(@closing) %> |
-<%= link_to 'Back', closings_path %>
+<%= link_to 'Back', closings_path %> |
+<%= button_to "Send Text", :action => "send_text", :id => @closing.id %>
+<p> <%= button_to "Send Mail", :action => "send_mail", :id => @closing.id %> </p>
+<p> <%= button_to "Add Closing Item", :action => "new", :closing_id => @closing.id, :controller => 
+"closing_items" %> </p>

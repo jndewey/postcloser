@@ -14,10 +14,12 @@ group :production do
 	gem 'pg'
 end
 
+gem 'twilio-ruby'
 
 gem 'devise'
 gem 'simple_form'
 
+gem "httparty"
 
 	#, :group => :development
 #end

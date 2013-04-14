@@ -1,5 +1,17 @@
 Postcloser::Application.routes.draw do
+
+
+
+
+  resources :closing_items
+
   get "profiles/show"
+  post "closing_items/new"
+
+
+  match "closings/send_text" => "closings#send_text", as: :send_text
+   match "closings/send_mail" => "closings#send_mail", as: :send_mail
+
 
   devise_for :users
 
@@ -11,6 +23,7 @@ Postcloser::Application.routes.draw do
   end
 
   resources :closings
+
 
   get 'feed', to: 'closings#index', as: :feed
   root to: 'closings#index'
