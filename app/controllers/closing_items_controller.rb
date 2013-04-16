@@ -23,6 +23,7 @@ class ClosingItemsController < ApplicationController
 
   # GET /closing_items/new
   # GET /closing_items/new.json
+
   def new
     @closing_item = ClosingItem.new
 
@@ -40,7 +41,9 @@ class ClosingItemsController < ApplicationController
   # POST /closing_items
   # POST /closing_items.json
   def create
+    @closing_values = session[:current_closing_values]
     @closing_item = ClosingItem.new(params[:closing_item])
+    @closing_item.closing_id = @closing_values[:id]
 
     respond_to do |format|
       if @closing_item.save

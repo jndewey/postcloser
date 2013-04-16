@@ -27,4 +27,5 @@
 
 
 <%= link_to 'Edit', edit_closing_item_path(@closing_item) %> |
-<%= link_to 'Back', closing_items_path %>
+<%= link_to 'Back', :action => "show", :id => @closing_item.closing_id, :controller => 
+"closings" %>

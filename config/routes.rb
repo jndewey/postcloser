@@ -6,7 +6,10 @@ Postcloser::Application.routes.draw do
   resources :closing_items
 
   get "profiles/show"
+  get "closing_items/new"
   post "closing_items/new"
+  post "closings/current_closing"
+  get "closings/show"
 
 
   match "closings/send_text" => "closings#send_text", as: :send_text

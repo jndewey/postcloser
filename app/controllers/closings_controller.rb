@@ -27,9 +27,12 @@ class ClosingsController < ApplicationController
 
   # GET /closings/1
   # GET /closings/1.json
+
+
   def show
 
     @closing = Closing.find(params[:id])
+    session[:current_closing_values] = params
 
     respond_to do |format|
       format.html # show.html.erb

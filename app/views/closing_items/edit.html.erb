@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @closing_item %> |
-<%= link_to 'Back', closing_items_path %>
+<%= link_to 'Back', :action => "show", :id => @closing_item.closing_id, :controller => 
+"closings" %>
