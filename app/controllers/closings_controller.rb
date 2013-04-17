@@ -32,7 +32,7 @@ class ClosingsController < ApplicationController
   def show
 
     @closing = Closing.find(params[:id])
-    session[:current_closing_values] = params
+    session[:current_closing_values] = params #creates a session to pass Closing id value to Closing_Item
 
     respond_to do |format|
       format.html # show.html.erb

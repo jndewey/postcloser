@@ -44,6 +44,7 @@ class ClosingItemsController < ApplicationController
     @closing_values = session[:current_closing_values]
     @closing_item = ClosingItem.new(params[:closing_item])
     @closing_item.closing_id = @closing_values[:id]
+    @closing_item.author = current_user.email
 
     respond_to do |format|
       if @closing_item.save
