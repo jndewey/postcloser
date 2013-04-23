@@ -3,6 +3,8 @@ class Closing < ActiveRecord::Base
 
   belongs_to :user
 
-    has_many  :closing_items
+  has_many  :closing_items
+
+  has_many :tasks, :through => :closing_items
 
 end

@@ -11,18 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414004446) do
+ActiveRecord::Schema.define(:version => 20130422003255) do
 
   create_table "closing_items", :force => true do |t|
     t.string   "title"
     t.string   "author"
-    t.string   "tasks"
-    t.string   "files"
     t.string   "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "dealname"
     t.integer  "closing_id"
+    t.boolean  "status"
   end
 
   create_table "closings", :force => true do |t|
@@ -43,6 +42,18 @@ ActiveRecord::Schema.define(:version => 20130414004446) do
     t.string   "borrower_counsel_one"
     t.string   "borrower_counsel_two"
     t.date     "closing_date"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "author"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "subject"
+    t.string   "status"
+    t.string   "assignee"
+    t.date     "deadline"
+    t.string   "name"
+    t.integer  "closing_item_id"
   end
 
   create_table "users", :force => true do |t|

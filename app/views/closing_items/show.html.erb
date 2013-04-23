@@ -6,26 +6,24 @@
 </p>
 
 <p>
-  <b>Author:</b>
-  <%= @closing_item.author %>
-</p>
-
-<p>
-  <b>Tasks:</b>
-  <%= @closing_item.tasks %>
-</p>
-
-<p>
-  <b>Files:</b>
-  <%= @closing_item.files %>
-</p>
-
-<p>
   <b>Notes:</b>
   <%= @closing_item.notes %>
+</p>
+
+<p>
+ <h3><b>Tasks:</b></h3>
+  <% @closing_item.tasks.each do |task| %>
+  <% id = task.id %>
+  <% title = task.name %>
+  <h4><p><%= link_to "#{title}", task_path(id) %></p></h4>
+  <strong><p>Assignor:</strong>  <%= task.author %></p>
+  <strong><p>Status:</strong>  <%= task.status %></p>
+  <strong><p>Assignee:</strong>  <%= task.assignee %></p>
+  <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_closing_item_path(@closing_item) %> |
 <%= link_to 'Back', :action => "show", :id => @closing_item.closing_id, :controller => 
-"closings" %>
+"closings" %> |
+<%= link_to 'Add Task', :action => "new", :controller => "tasks" %>

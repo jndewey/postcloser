@@ -116,16 +116,37 @@ class ClosingsController < ApplicationController
 
   def send_mail
     @closing = Closing.find(params[:id])
+    @recipients = Array.new
+    if @closing.Bank_Closer != nil
+      @recipients << @closing.Bank_Closer
+    end
+    if @closing.team_member_one != nil
+      @recipients << @closing.team_member_one
+    end
+    if @closing.team_member_two != nil
+      @recipients << @closing.team_member_two
+    end
+    @recipient_list = String.new
+    @recipient_list = @recipients.join('; ')
     url = "https://sendgrid.com/api/mail.send.json"
     response = HTTParty.post url, :body => {
     "api_user" => "jndewey",
     "api_key" => "huskers",
-    "to" => "jndewey@gmail.com",
-    "from" => "joe.dewey@hklaw.com",
+    "to" => @recipient_list,
+    "from" => @closing.team_leader,
     "subject" => @closing.dealname,
     "text" => "The following items are still outstanding #{@closing.content}."
     }
     response.body
+  end
+
+  def generate_status_update
+    @closing = Closing.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @closing }
     end
+  end
 
 end

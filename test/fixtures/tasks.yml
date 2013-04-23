@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  author: MyString
+  name: MyString
+  status: false
+  deadline: 2013-04-21
+
+two:
+  author: MyString
+  name: MyString
+  status: false
+  deadline: 2013-04-21

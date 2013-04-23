@@ -5,9 +5,8 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :tasks %>
-    <%= f.input :files %>
-    <%= f.input :notes %>
+    <%= f.input :notes, label: "Current Status" %>
+    <%= f.input :status, label: "Check the Box if this Closing Item is Completed" %>
   </div>
 
   <div class="form-actions">

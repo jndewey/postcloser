@@ -3,7 +3,6 @@ class CreateClosingItems < ActiveRecord::Migration
     create_table :closing_items do |t|
       t.string :title
       t.string :author
-      t.string :tasks
       t.string :files
       t.string :notes
 

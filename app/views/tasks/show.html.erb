@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Task Name:</b>
+  <%= @task.name %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @task.author %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+</p>
+
+<p>
+  <b>Assigned To:</b>
+  <%= @task.assignee %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', :action => "show", :id => @closingitem_values[:id], 
+:controller => "closing_items" %>

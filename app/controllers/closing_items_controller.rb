@@ -14,6 +14,7 @@ class ClosingItemsController < ApplicationController
   # GET /closing_items/1.json
   def show
     @closing_item = ClosingItem.find(params[:id])
+    session[:current_closingitem_values] = params 
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,11 +45,12 @@ class ClosingItemsController < ApplicationController
     @closing_values = session[:current_closing_values]
     @closing_item = ClosingItem.new(params[:closing_item])
     @closing_item.closing_id = @closing_values[:id]
+    @closing_item.dealname = @closing_values[:dealname]
     @closing_item.author = current_user.email
 
     respond_to do |format|
       if @closing_item.save
-        format.html { redirect_to @closing_item, notice: 'Closing was successfully created.' }
+        format.html { redirect_to @closing_item, notice: 'Closing Item was successfully created.' }
         format.json { render json: @closing_item, status: :created, location: @closing_item }
       else
         format.html { render action: "new" }
