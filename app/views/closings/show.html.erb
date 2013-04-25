@@ -18,8 +18,8 @@
     
     <tbody>
  <td><h3><p><%= link_to "#{title}", closing_item_path(id) %></h3></p></td>
- <td><h4><p><FONT COLOR="%2343afb2"><%= closing_item.notes %></p><h4></FONT></td>
- <td><h4><p><FONT COLOR="%2343afb2"><% if closing_item.status == true %> <%= "Completed" %><% else %> <%= "Open" %><% end %></p><h4></FONT></td>
+ <td><h4><p><%= closing_item.notes %></p><h4></td>
+ <td><h4><p><% if closing_item.status == true %> <%= "Completed" %><% else %> <%= "Open" %><% end %></p><h4></td>
 
   <% if tasks != [] %>
   <p><% tasks.each do |task| %>
