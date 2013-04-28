@@ -85,12 +85,16 @@ class ClosingsController < ApplicationController
 
   def show
 
+    if current_user == nil # confirm whether someone is signed in
+      @need_to_log_in = "Log in to see your closing"
+    else 
     @closing = Closing.find(params[:id])
     session[:current_closing_values] = params #creates a session to pass Closing id value to Closing_Item
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @closing }
+      end
     end
   end
 
@@ -117,6 +121,13 @@ class ClosingsController < ApplicationController
     users = Array.new
     users << @closing.team_member_one
     users << @closing.team_member_two
+    users << @closing.team_member_three
+    users << @closing.team_member_four
+    users << @closing.team_member_five
+    users << @closing.Bank_Closer
+    users << @closing.relationship_manager
+    users << @closing.borrower_counsel_one
+    users << @closing.borrower_counsel_two
     subject = @closing.dealname
     UserMailer.send_mail_assigned(users, subject).deliver
 

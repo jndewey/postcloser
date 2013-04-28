@@ -11,10 +11,12 @@ class UserMailer < ActionMailer::Base
   end
 
   def send_mail_task(users, subject, deadline, closing)
+    closing_details = Closing.find(closing)
+    @closing_id = closing_details[:id]
+    closing_name = closing_details[:dealname]
     @subject = subject
-    @deadline = deadline  
-    @closing = closing
-  	mail(:to => users, :subject => closing)
+    @deadline = deadline
+  	mail(:to => users, :subject => closing_name)
   end
 
 

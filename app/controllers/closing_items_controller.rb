@@ -41,6 +41,11 @@ class ClosingItemsController < ApplicationController
 
   # POST /closing_items
   # POST /closing_items.json
+  def bulk_generate
+
+  end
+
+
   def create
     @closing_values = session[:current_closing_values]
     @closing_item = ClosingItem.new(params[:closing_item])
@@ -78,11 +83,13 @@ class ClosingItemsController < ApplicationController
   # DELETE /closing_items/1
   # DELETE /closing_items/1.json
   def destroy
+    @closing_values = session[:current_closing_values]
     @closing_item = ClosingItem.find(params[:id])
     @closing_item.destroy
 
-    respond_to do |format|
-      format.html { redirect_to closing_items_url }
+     respond_to do |format|
+      format.html { redirect_to :action => "show", :id => @closing_values[:id], 
+:controller => "closings" }
       format.json { head :no_content }
     end
   end

@@ -8,6 +8,10 @@
     <p>
       You have been added as a team member for the following transaction: <br/>
       <%= @subject %>
+
+      <%= url_for(:host => "closingcenter.herokuapp.com",
+            :controller => "closings",
+            :action => "index") %>
     </p>
    
   </body>

@@ -11,6 +11,11 @@
     </p>
 
     <p> Deadline: <%= @deadline %>
+
+           <%= url_for(:host => "closingcenter.herokuapp.com",
+            :controller => "closings",
+            :action => "show",
+            :id => @closing_id) %>
    
   </body>
 </html>

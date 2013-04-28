@@ -15,12 +15,13 @@
   <% title = task.name %>
   <h4><p><%= link_to "#{title}", task_path(id) %></p></h4>
   <strong><p>Status:</strong>  <%= task.status %></p>
-  <strong><p>Assignee:</strong>  <%= task.assignee %></p>
-  <% end %>
+  <strong><p>Assignee:</strong>  <% task_assignee = User.find(task.assignee) %><%= task_assignee.email %>
+    <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_closing_item_path(@closing_item) %> |
 <%= link_to 'Back', :action => "show", :id => @closing_item.closing_id, :controller => 
 "closings" %> |
+<%=link_to 'Delete', @closing_item, method: :delete, data: {confirm: "Are you sure you want to delete this Closing Item?"} %> |
 <%= link_to 'Add Task', :action => "new", :controller => "tasks" %>

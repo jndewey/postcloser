@@ -55,12 +55,12 @@ class TasksController < ApplicationController
     users = user_base.email  
     subject = @task.name
     deadline = @task.deadline
-    closing = @closingvalues[:dealname]
+    closing = @closingvalues[:id]
     UserMailer.send_mail_task(users, subject, deadline, closing).deliver
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: "Task was successfully created. #{closing}" }
+        format.html { redirect_to @task, notice: "Task was successfully created." }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -88,11 +88,13 @@ class TasksController < ApplicationController
   # DELETE /closing_items/1
   # DELETE /closing_items/1.json
   def destroy
+    @closingitem_values = session[:current_closingitem_values]
     @task = Task.find(params[:id])
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to :action => "show", :id => @closingitem_values[:id], 
+:controller => "closing_items" }
       format.json { head :no_content }
     end
   end
