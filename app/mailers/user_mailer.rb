@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
     @deadline = deadline  
     @closing = closing
-  	mail(:to => users, :subject => 'closing')
+  	mail(:to => users, :subject => closing)
   end
 
 
