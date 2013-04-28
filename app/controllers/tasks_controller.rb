@@ -56,7 +56,8 @@ class TasksController < ApplicationController
     subject = @task.name
     deadline = @task.deadline
     closing = @closingvalues[:id]
-    UserMailer.send_mail_task(users, subject, deadline, closing).deliver
+    assignor = @task.author
+    UserMailer.send_mail_task(users, subject, deadline, closing, assignor).deliver
 
     respond_to do |format|
       if @task.save
