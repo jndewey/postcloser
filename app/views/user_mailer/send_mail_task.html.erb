@@ -5,12 +5,11 @@
   </head>
   <body>
     <h1>New Task</h1>
-    <p>
-      The following task has been assigned to you: <br/>
-      <%= @subject %>
-    </p>
 
-    <p> Deadline: <%= @deadline %>
+    <p> The following task has been assigned to you:</p>
+      <p><em><%= @subject %></em></p>
+
+    <p> Deadline: <%= @deadline %></p>
 
            <%= url_for(:host => "closingcenter.herokuapp.com",
             :controller => "closings",

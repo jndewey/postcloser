@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "jndewey@gmail.com"
+  default from: "hkclosingcenter@gmail.com"
   def send_mail(users, subject, items)
   	@closing_items = items
     mail(:to => users, :subject => subject)
