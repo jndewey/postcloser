@@ -45,9 +45,18 @@ class TasksController < ApplicationController
   # POST /closing_items.json
   def create
     @closingitem_values = session[:current_closingitem_values]
+    @closingvalues = session[:current_closing_values]
     @task = Task.new(params[:task])
     @task.closing_item_id = @closingitem_values[:id]
     @task.author = current_user.email
+
+    assignee = @task.assignee
+    user_base = User.find(assignee)
+    users = user_base.email  
+    subject = @task.name
+    deadline = @task.deadline
+    closing = @closingvalues[:dealname]
+    UserMailer.send_mail_task(users, subject, deadline, closing).deliver
 
     respond_to do |format|
       if @task.save

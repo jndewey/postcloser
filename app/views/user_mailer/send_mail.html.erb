@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Status Update</h1>
+    <p>
+      Set forth below is a summary of outstanding items for the above-referenced transaction: <br/>
+      <% @closing_items.each do |item| %>
+      <p>*<%= item.title %> -- <%= item.notes %></p>
+      <% end %>
+
+    </p>
+   
+  </body>
+</html>

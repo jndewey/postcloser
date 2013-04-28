@@ -17,7 +17,8 @@
 
 <p>
   <b>Assigned To:</b>
-  <%= @task.assignee %>
+  <% task_assignee = User.find(@task.assignee) %>
+  <%= task_assignee.email %>
 </p>
 
 

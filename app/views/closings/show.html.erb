@@ -24,7 +24,8 @@
   <% if tasks != [] %>
   <p><% tasks.each do |task| %>
   <td>  <h5><%= task.name %></h5>
-    <h6><%= task.assignee %></h6>
+    <% task_assignee = User.find(task.assignee) %>
+    <h6><%= task_assignee.email %></h6>
     <h6><%= task.deadline %></h6></td>
     <% end %>
     <% end %>

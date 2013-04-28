@@ -4,16 +4,70 @@ class ClosingsController < ApplicationController
 
   
   def index
-    if current_user == nil
+    if current_user == nil # confirm whether someone is signed in
       @need_to_log_in = "Log in to see your closings"
     else 
-    @user_closings = Array.new
-    @closings = Closing.all
-    @closings.each do |closing| 
-      if closing.team_leader == nil
+    @user_closings = Array.new # create an array to hold closings
+    @closings = Closing.all # call on Closing model to assign all closings to @closing variable
+    @closings.each do |closing|  # iterate over each closing in the array
+      if closing.team_leader == nil # if the closing has no team leader, set it to none
         closing.team_leader = "none"
       end
-       if closing.team_leader.include?(current_user.email)
+      if closing.Bank_Closer == nil # if the closing has no team leader, set it to none
+        closing.Bank_Closer = "none"
+      end
+       if closing.relationship_manager == nil # if the closing has no team leader, set it to none
+        closing.relationship_manager = "none"
+      end
+       if closing.team_member_one == nil # if the closing has no team leader, set it to none
+        closing.team_member_one = "none"
+      end
+       if closing.team_member_two == nil # if the closing has no team leader, set it to none
+        closing.team_member_two = "none"
+      end
+       if closing.team_member_three == nil # if the closing has no team leader, set it to none
+        closing.team_member_three = "none"
+      end
+       if closing.team_member_four == nil # if the closing has no team leader, set it to none
+        closing.team_member_four = "none"
+      end
+       if closing.team_member_five == nil # if the closing has no team leader, set it to none
+        closing.team_member_five = "none"
+      end
+       if closing.borrower_counsel_one == nil # if the closing has no team leader, set it to none
+        closing.borrower_counsel_one = "none"
+      end
+       if closing.borrower_counsel_two == nil # if the closing has no team leader, set it to none
+        closing.borrower_counsel_two = "none"
+      end
+       if closing.team_leader.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+        if closing.Bank_Closer.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+        if closing.relationship_manager.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+        if closing.team_member_one.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.team_member_two.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.team_member_three.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.team_member_four.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.team_member_five.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.borrower_counsel_one.include?(current_user.email) # if the current user is team leader then include closing in index
+        @user_closings << closing
+       end
+       if closing.borrower_counsel_two.include?(current_user.email) # if the current user is team leader then include closing in index
         @user_closings << closing
        end
      end
@@ -60,6 +114,11 @@ class ClosingsController < ApplicationController
   # POST /closings.json
   def create
     @closing = current_user.closings.new(params[:closing])
+    users = Array.new
+    users << @closing.team_member_one
+    users << @closing.team_member_two
+    subject = @closing.dealname
+    UserMailer.send_mail_assigned(users, subject).deliver
 
     respond_to do |format|
       if @closing.save
@@ -115,6 +174,17 @@ class ClosingsController < ApplicationController
     end
 
   def send_mail
+    @closing = Closing.find(params[:id])
+    users = Array.new
+    users << @closing.team_leader
+    users << @closing.team_member_one
+    subject = @closing.dealname
+    items = Array.new
+    items = @closing.closing_items
+    UserMailer.send_mail(users, subject, items).deliver
+    end
+
+  def send_mail_sendgrid
     @closing = Closing.find(params[:id])
     @recipients = Array.new
     if @closing.Bank_Closer != nil
