@@ -85,9 +85,6 @@ class ClosingsController < ApplicationController
 
   def show
 
-    if current_user == nil # confirm whether someone is signed in
-      @need_to_log_in = "Log in to see your closing"
-    else 
     @closing = Closing.find(params[:id])
     session[:current_closing_values] = params #creates a session to pass Closing id value to Closing_Item
 
