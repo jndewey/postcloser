@@ -84,7 +84,6 @@ class ClosingsController < ApplicationController
 
 
   def show
-
     @closing = Closing.find(params[:id])
     session[:current_closing_values] = params #creates a session to pass Closing id value to Closing_Item
 
@@ -92,7 +91,6 @@ class ClosingsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @closing }
       end
-    end
   end
 
   # GET /closings/new
