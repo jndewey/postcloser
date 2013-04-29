@@ -10,9 +10,11 @@ Postcloser::Application.routes.draw do
   post "closings/current_closing"
   get "closings/show"
 
+  get "tasks/mytasks"
+  post "tasks/mytasks"
   get "tasks/new"
   post "tasks/new"
-  get "tasks/show"
+
 
 
   get "closing_items/show"

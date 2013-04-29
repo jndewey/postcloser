@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<br>
+<p>
+  <b>Task Name:</b>
+  <% @tasks.each do |task| %>
+  <p><%= task.name %> | Due date: <%= task.deadline %></p>
+  <% end %>
+</p>
+
+
+
+
+
+
+<%= link_to 'Back', closings_path %>

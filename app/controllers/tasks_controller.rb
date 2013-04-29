@@ -10,6 +10,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def mytasks
+    @all_tasks = Task.all
+    @tasks = Array.new
+    @all_tasks.each do |task|
+      if task[:assignee] == current_user.id.to_s
+        @tasks << task
+      end
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tasks }
+    end
+  end
+
   # GET /closing_items/1
   # GET /closing_items/1.json
   def show
