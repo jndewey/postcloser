@@ -9,6 +9,9 @@ Postcloser::Application.routes.draw do
   post "closing_items/new"
   post "closings/current_closing"
   get "closings/show"
+  post "closings/show"
+  get "closings/show_open"
+  post "closings/show_open"
 
   get "tasks/mytasks"
   post "tasks/mytasks"
@@ -19,7 +22,7 @@ Postcloser::Application.routes.draw do
 
   get "closing_items/show"
 
-
+  match "closings/show" => "closings#show"
   match "closings/send_text" => "closings#send_text", as: :send_text
    match "closings/send_mail" => "closings#send_mail", as: :send_mail
 

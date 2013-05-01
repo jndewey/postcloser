@@ -93,6 +93,16 @@ class ClosingsController < ApplicationController
       end
   end
 
+  def show_open
+    @closing = Closing.find(params[:id])
+    session[:current_closing_values] = params #creates a session to pass Closing id value to Closing_Item
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @closing }
+      end
+  end
+
   # GET /closings/new
   # GET /closings/new.json
   def new
@@ -124,7 +134,8 @@ class ClosingsController < ApplicationController
     users << @closing.borrower_counsel_one
     users << @closing.borrower_counsel_two
     subject = @closing.dealname
-    UserMailer.send_mail_assigned(users, subject).deliver
+    leader = @closing.team_leader
+    UserMailer.send_mail_assigned(users, subject, leader).deliver
 
     respond_to do |format|
       if @closing.save

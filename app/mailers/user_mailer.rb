@@ -5,9 +5,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => users, :subject => subject)
   end
 
-  def send_mail_assigned(users, subject)
+  def send_mail_assigned(users, subject, leader)
   	@subject = subject
-  	mail(:to => users, :subject => subject)
+  	mail(:to => users, :cc => leader, :subject => subject)
   end
 
   def send_mail_task(users, subject, deadline, closing, assignor)

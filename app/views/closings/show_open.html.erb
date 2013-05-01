@@ -6,7 +6,6 @@
   <thead>
       <tr>
         <th>Closing Item</th>
-        <th>Notes</th>
         <th>Status</th>
         <th>Tasks</th>
       </tr>
@@ -18,9 +17,9 @@
  
     
     <tbody>
+      <% if closing_item.status != true %>
  <td><h3><p><%= link_to "#{title}", closing_item_path(id) %></h3></p></td>
  <td><h4><p><%= closing_item.notes %></p><h4></td>
- <td><h4><p><% if closing_item.status == true %> <%= "Completed" %><% else %> <%= "Open" %><% end %></p><h4></td>
 
   <% if tasks != [] %>
   <p><% tasks.each do |task| %>
@@ -30,7 +29,8 @@
     <h6><%= task.deadline %></h6></td>
     <% end %>
     <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
     </tbody>
     </table>
 </p>
@@ -40,11 +40,10 @@
 <%= button_to 'Send Email Update to Group', :action => "send_mail", :id => @closing.id, class: "btn btn-success" %>
 
 <p> <%= button_to "Add Closing Item", :action => "new", :controller => "closing_items", class: 'btn btn-success' %> </p>
-
 <p> <%= button_to "Show my Tasks", :action => "mytasks", :controller => "tasks", class: 'btn btn-success' %> </p>
 
 
 
 <%= link_to 'Edit', edit_closing_path(@closing) %> |
 <%= link_to 'Back', closings_path %> |
-<%= link_to "Hide Completed Closing Items", :action => "show_open", :id => @closing.id, :controller => "closings" %>
+<%= link_to "Show Completed Closing Items", :action => "show", :controller => "closings", :id => @closing.id %>
