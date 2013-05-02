@@ -1,9 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  content: MyText
+  dealname: MyString
+  client_number: 1
+  matter_number: 1
+  team_leader: MyString
+  closing_date: 2013-05-01
+  closing_status: false
+  inside_member: MyString
+  outside_member: MyString
+  deal_type: MyString
 
 two:
-  name: MyString
-  content: MyText
+  dealname: MyString
+  client_number: 1
+  matter_number: 1
+  team_leader: MyString
+  closing_date: 2013-05-01
+  closing_status: false
+  inside_member: MyString
+  outside_member: MyString
+  deal_type: MyString

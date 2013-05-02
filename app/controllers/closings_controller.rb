@@ -13,63 +13,21 @@ class ClosingsController < ApplicationController
       if closing.team_leader == nil # if the closing has no team leader, set it to none
         closing.team_leader = "none"
       end
-      if closing.Bank_Closer == nil # if the closing has no team leader, set it to none
-        closing.Bank_Closer = "none"
+       if closing.inside_member == nil # if the closing has no team leader, set it to none
+        closing.inside_member = "none"
       end
-       if closing.relationship_manager == nil # if the closing has no team leader, set it to none
-        closing.relationship_manager = "none"
-      end
-       if closing.team_member_one == nil # if the closing has no team leader, set it to none
-        closing.team_member_one = "none"
-      end
-       if closing.team_member_two == nil # if the closing has no team leader, set it to none
-        closing.team_member_two = "none"
-      end
-       if closing.team_member_three == nil # if the closing has no team leader, set it to none
-        closing.team_member_three = "none"
-      end
-       if closing.team_member_four == nil # if the closing has no team leader, set it to none
-        closing.team_member_four = "none"
-      end
-       if closing.team_member_five == nil # if the closing has no team leader, set it to none
-        closing.team_member_five = "none"
-      end
-       if closing.borrower_counsel_one == nil # if the closing has no team leader, set it to none
-        closing.borrower_counsel_one = "none"
-      end
-       if closing.borrower_counsel_two == nil # if the closing has no team leader, set it to none
-        closing.borrower_counsel_two = "none"
+       if closing.outside_member == nil # if the closing has no team leader, set it to none
+        closing.outside_member = "none"
       end
        if closing.team_leader.include?(current_user.email) # if the current user is team leader then include closing in index
         @user_closings << closing
        end
-        if closing.Bank_Closer.include?(current_user.email) # if the current user is team leader then include closing in index
+       if closing.inside_member.include?(current_user.email)
         @user_closings << closing
-       end
-        if closing.relationship_manager.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-        if closing.team_member_one.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.team_member_two.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.team_member_three.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.team_member_four.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.team_member_five.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.borrower_counsel_one.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
-       if closing.borrower_counsel_two.include?(current_user.email) # if the current user is team leader then include closing in index
-        @user_closings << closing
-       end
+      end
+      if closing.outside_member.include?(current_user.email)
+      end
+       
      end
     end
 
@@ -124,15 +82,8 @@ class ClosingsController < ApplicationController
   def create
     @closing = current_user.closings.new(params[:closing])
     users = Array.new
-    users << @closing.team_member_one
-    users << @closing.team_member_two
-    users << @closing.team_member_three
-    users << @closing.team_member_four
-    users << @closing.team_member_five
-    users << @closing.Bank_Closer
-    users << @closing.relationship_manager
-    users << @closing.borrower_counsel_one
-    users << @closing.borrower_counsel_two
+    users << @closing.inside_member
+    users << @closing.outside_member
     subject = @closing.dealname
     leader = @closing.team_leader
     UserMailer.send_mail_assigned(users, subject, leader).deliver

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422003255) do
+ActiveRecord::Schema.define(:version => 20130502023602) do
 
   create_table "closing_items", :force => true do |t|
     t.string   "title"
@@ -25,23 +25,18 @@ ActiveRecord::Schema.define(:version => 20130422003255) do
   end
 
   create_table "closings", :force => true do |t|
-    t.string   "name"
     t.string   "dealname"
-    t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.integer  "client_number"
+    t.integer  "matter_number"
     t.string   "team_leader"
-    t.string   "relationship_manager"
-    t.string   "Bank_Closer"
-    t.string   "team_member_one"
-    t.string   "team_member_two"
-    t.string   "team_member_three"
-    t.string   "team_member_four"
-    t.string   "team_member_five"
-    t.string   "borrower_counsel_one"
-    t.string   "borrower_counsel_two"
     t.date     "closing_date"
+    t.boolean  "closing_status"
+    t.string   "inside_member"
+    t.string   "outside_member"
+    t.string   "deal_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
   end
 
   create_table "tasks", :force => true do |t|
