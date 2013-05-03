@@ -21,6 +21,8 @@ gem 'simple_form'
 
 gem "httparty"
 
+gem 'taps'
+
 	#, :group => :development
 #end
 

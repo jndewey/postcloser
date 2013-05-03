@@ -145,7 +145,8 @@ class ClosingsController < ApplicationController
     @closing = Closing.find(params[:id])
     users = Array.new
     users << @closing.team_leader
-    users << @closing.team_member_one
+    users << @closing.inside_member
+    users << @closing.outside_member
     subject = @closing.dealname
     items = Array.new
     items = @closing.closing_items
