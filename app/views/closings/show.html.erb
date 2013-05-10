@@ -7,6 +7,7 @@
       <tr>
         <th>Closing Item</th>
         <th>Notes</th>
+        <th>Messages</th>
         <th>Status</th>
         <th>Tasks</th>
       </tr>
@@ -14,12 +15,14 @@
   <% @closing.closing_items.each do |closing_item|%>
   <% id = closing_item.id %>
   <% title = closing_item.title %>
+  <% message = closing_item.messages %>
   <% tasks = closing_item.tasks %>
  
     
     <tbody>
  <td><h3><p><%= link_to "#{title}", closing_item_path(id) %></h3></p></td>
  <td><h4><p><%= closing_item.notes %></p><h4></td>
+ <td><h4><p><%= closing_item.messages %></p><h4></td>
  <td><h4><p><% if closing_item.status == true %> <%= "Completed" %><% else %> <%= "Open" %><% end %></p><h4></td>
 
   <% if tasks != [] %>

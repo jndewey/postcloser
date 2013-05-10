@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502023602) do
+ActiveRecord::Schema.define(:version => 20130503013325) do
 
   create_table "closing_items", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130502023602) do
     t.string   "dealname"
     t.integer  "closing_id"
     t.boolean  "status"
+    t.string   "messages"
   end
 
   create_table "closings", :force => true do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130502023602) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.text     "team_member"
   end
 
   create_table "tasks", :force => true do |t|

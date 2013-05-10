@@ -1,4 +1,4 @@
-
+<br>
 
 <%= simple_form_for(@closing_item) do |f| %>
   <%= f.error_notification %>
@@ -6,6 +6,7 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :notes, label: "Current Status" %>
+    <%= f.input :messages, label: "Messages" %>
     <%= f.input :status, label: "Check the Box if this Closing Item is Completed" %>
   </div>
 

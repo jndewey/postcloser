@@ -86,6 +86,21 @@ class ClosingsController < ApplicationController
     users << @closing.outside_member
     subject = @closing.dealname
     leader = @closing.team_leader
+    if @closing.deal_type = "New Loan"
+      @closing.closing_items.new(:title => "Loan Documents", :notes => "Pending")
+      @closing.closing_items.new(:title => "Opinion Letter", :notes => "Pending")
+      @closing.closing_items.new(:title => "Entity Documents", :notes => "Pending")
+      @closing.closing_items.new(:title => "Title Commitment", :notes => "Pending")
+      @closing.closing_items.new(:title => "Municipal Lien Letters", :notes => "Pending")
+      @closing.closing_items.new(:title => "Insured Closing Letter", :notes => "Pending")
+      @closing.closing_items.new(:title => "Survey", :notes => "Pending")
+      @closing.closing_items.new(:title => "Zoning Letter", :notes => "Pending")
+      @closing.closing_items.new(:title => "Certificate of Occupancy", :notes => "Pending")
+      @closing.closing_items.new(:title => "Copies of Leases", :notes => "Pending")
+      @closing.closing_items.new(:title => "SNDAs", :notes => "Pending")
+      @closing.closing_items.new(:title => "Tenant Estoppels", :notes => "Pending")
+      @closing.closing_items.new(:title => "UCC, Litigation and Other Searches", :notes => "Pending")
+    end
     UserMailer.send_mail_assigned(users, subject, leader).deliver
 
     respond_to do |format|

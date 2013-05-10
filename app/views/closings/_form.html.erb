@@ -1,3 +1,5 @@
+
+<br>
 <%= simple_form_for(@closing, html: {class: "form-horizontal"}) do |f| %>
   <% if @closing.errors.any? %>
     <div id="error_explanation">
@@ -13,8 +15,10 @@
 
          <%= f.input :dealname, label: "Deal Name" %>
         <%= f.input :team_leader, label: "Team Leader" %>
+        <%= f.input :team_member, lable: "Team Member" %>
         <%= f.input :inside_member, label: "Inside Member" %>
         <%= f.input :outside_member, label: "Outside Member" %>
+        <%= f.input :deal_type, label: "Type of Deal" %>
         <%= f.input :closing_date, label: "Closing Date" %>
       <div class="form-actions">
         <%= f.button :submit %>
